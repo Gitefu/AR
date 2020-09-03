@@ -15,14 +15,14 @@
 <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
 
 
-<a-scene embedded arjs="debugUIEnabled:false;"  vr-mode-ui="enabled: false">
+<a-scene embedded arjs="debugUIEnabled:false;" renderer="gammaOutput: true;" vr-mode-ui="enabled: false">
 
 <a-assets>
 	<a-asset-item id="yatsuha" src="yatsuha_new.glb"></a-asset-item>
 </a-assets>
 
 <a-marker preset = 'custom' type='pattern' url='pattern-favicon512.patt'>
-	<a-entity gltf-model="#yatsuha"  rotation="0 180 0" position="0 0.5 0" scale="1 1 1" ></a-entity>
+	<a-entity gltf-model="#yatsuha"  rotation="0 180 0" position="0 0.5 0" scale="10 10 10" ></a-entity>
 </a-marker>
 
 <a-light type="ambient" color="#ffffff"></a-light>
@@ -30,8 +30,5 @@
 <a-entity camera></a-entity>
 
     </a-scene>
-  <script>
-    document.querySelector("a-scene").renderer.gammaInput = true;
-  </script>
   </body>
 </html>
