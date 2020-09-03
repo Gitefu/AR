@@ -15,7 +15,7 @@
 <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
 
 
-<a-scene embedded arjs="debugUIEnabled:false;" renderer="gammaOutput: true;" vr-mode-ui="enabled: false">
+<a-scene embedded arjs="debugUIEnabled:false;"  vr-mode-ui="enabled: false">
 
 <a-assets>
 	<a-asset-item id="yatsuha" src="yatsuha_uni.glb"></a-asset-item>
@@ -30,5 +30,8 @@
 <a-entity camera></a-entity>
 
     </a-scene>
+  <script>
+    document.querySelector("a-scene").renderer.gammaInput = true;
+  </script>
   </body>
 </html>
