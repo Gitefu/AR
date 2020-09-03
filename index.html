@@ -12,16 +12,17 @@
   <!-- AR.js ライブラリの読み込み -->
   <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
 <!-- glTFに含まれたアニメーションを再生する為の読み込み -->
-<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v6.0.0/dist/aframe-extras.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
 
-<a-scene embedded arjs="debugUIEnabled:false;" vr-mode-ui="enabled: false">
+
+<a-scene embedded arjs="debugUIEnabled:false;" renderer="gammaOutput: true;" vr-mode-ui="enabled: false">
 
 <a-assets>
 	<a-asset-item id="yatsuha" src="yatsuha_new.glb"></a-asset-item>
 </a-assets>
 
 <a-marker preset = 'custom' type='pattern' url='pattern-favicon512.patt'>
-	<a-entity gltf-model="#yatsuha"  rotation="0 180 0" position="0 0.5 0" scale="1 1 1" animation-mixer="clip:*" ></a-entity>
+	<a-entity gltf-model="#yatsuha"  rotation="0 180 0" position="0 0.5 0" scale="1 1 1" ></a-entity>
 </a-marker>
 
 <a-light type="ambient" color="#ffffff"></a-light>
