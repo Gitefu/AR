@@ -1,38 +1,225 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>アイドルコネクトAR</title>
-  </head>
-  <body style="margin:0px; overflow:hidden;">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta property="og:title" content="アイコネのドット風AR">
+  <meta property="og:description" content="アイドルコネクトのキャラクターのドット絵風3Dモデルを使ったARです．">
+  <meta property="og:url" content="https://gitefu.github.io/AR/index.html">
+  <meta property="og:site_name" content="アイコネのドット風AR">
+  <meta property="og:type" content="website">
+  <meta name="description" content="アイドルコネクトのキャラクターのドット絵風3Dモデルを使ったARです．" />
+  <title>アイコネのドット風AR</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet">
+  <link href="css/reset.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="css/photoswipe/photoswipe.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="css/photoswipe/default-skin/default-skin.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="css/style.css" media="all" rel="stylesheet" type="text/css" />
+  <link rel="shortcut icon" href="img/favicon.ico" />
+  <link rel=”canonical” href="https://gitefu.github.io/AR/index.html" />
+</head>
 
-    <!-- 2020/09/04時点でのうまく動くライブラリ -->
-    <!-- A-Frame ライブラリの読み込み -->
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <!-- AR.js ライブラリの読み込み -->
-    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
-    <!-- glTFに含まれたアニメーションを再生する為の読み込み -->
-    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
-    <script src="https://unpkg.com/aframe-text-geometry-component@0.5.1/dist/aframe-text-geometry-component.min.js"></script>.
+<body>
+  <div class="wrapper">
 
-    <!-- シーンの設定 -->
-    <a-scene embedded arjs="debugUIEnabled:false;" renderer="gammaOutput: true;" vr-mode-ui="enabled: false">
-      <!-- データの読み込み -->
-      <a-assets>
-        <a-asset-item id="yatsuha" src="./arData/yatsuha/yatsuha2.gltf"></a-asset-item>
-      </a-assets>
-      <!-- マーカーのセッティング -->
-      <a-marker preset = 'custom' type='pattern' url='./arData/yatsuha/pattern-yatsuha.patt'>
-        <a-entity gltf-model="#yatsuha"  rotation="0 0 0" position="0 0 0" scale="5 5 5" animation-mixer spinning="" emissive-light="" material="" visible="" ></a-entity>
-      </a-marker>
-      <!-- 明るさ調整 -->
-      <a-light type="ambient" color="#ffffff" intensity="1.0" ></a-light>
-      <a-entity camera></a-entity>
-    </a-scene>
-  </body>
-  <!-- レンダリングのやつ〜 -->
-  <script>
-    document.querySelector("a-scene").renderer.gammaInput = true;
-  </script>
+    <!-- .gnav -->
+    <nav class="gnav" class="fixed">
+      <ul class="gnav-list">
+        <li class="gnav-item"><a class="gnav-link" href="#camera-section">ARカメラ起動</a></li>
+        <li class="gnav-item"><a class="gnav-link" href="#marker-section">マーカー一覧</a></li>
+        <li class="gnav-item"><a class="gnav-link" href="#fix-section">既知の修正箇所</a></li>
+      </ul>
+    </nav>
+    <!-- /.gnav -->
+
+    <!-- .header -->
+    <header class="header">
+      <h1 class="logo">
+        <div class="logo-title"> アイコネのドット風AR</div>
+        <div class="logo-subtitle">別の活動のおまけで作っています．</div>
+      </h1>
+    </header>
+    <!-- /.header -->
+
+    <main class="content">
+
+      <!-- .camera-section -->
+      <section class="camera-section section" id="camera-section">
+        <div class="inner">
+          <div class="section-heading">
+            <h2 class="heading-primary">カメラ起動</h2>
+          </div>
+          <div class="section-lead">
+            <p>カメラは<a class="works-url-link" href="./camera/index.html" target="_blank">こちら</a>をクリックして起動してください．<br>画面でマーカーを出すと光の反射でたまに誤検知します．</p>
+          </div>
+          <div class="section-body works">
+            <div class="works-list js-my-gallery">
+              <figure class="works-item">
+                <a href="img/works/cameraDemo1.jpeg" data-size="800x600" class="works-image-wrapper works-link hover-action">
+                  <img class="works-image lazyload fadein" src="img/placeholder4x3.png" data-src="img/works/cameraDemo1.jpeg"
+                    alt="" />
+                </a>
+                <figcaption class="works-body">
+                  <div class="works-title">成功例</div>
+                  <div class="works-text">(坂上八葉ちゃんのモデル)</div>
+                  </div>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- /.works-section -->
+
+      <!-- .marker-section -->
+      <section class="marker-section section" id="marker-section">
+        <div class="inner">
+          <div class="section-heading">
+            <h2 class="heading-primary">マーカー一覧</h2>
+          </div>
+          <div class="section-lead">
+            <p>他の子のデータ作成は大学の忙しさと要相談<br>データくれたら追加します．</p>
+          </div>
+          <div class="section-body works">
+            <div class="works-list js-my-gallery">
+              <figure class="works-item">
+                <a href="./camera/arData/yatsuha/pattern-yatsuha.png" data-size="512x512" class="works-image-wrapper works-link hover-action">
+                  <img class="works-image lazyload fadein" src="img/placeholder4x3.png" data-src="./camera/arData/yatsuha/pattern-yatsuha.png"
+                    alt="" />
+                </a>
+                <figcaption class="works-body">
+                  <div class="works-title">八葉マーカー</div>
+                  <div class="works-text">走る坂上八葉が現れる</div>
+                  </div>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- /.markers-section -->
+      <!-- .fix-section -->
+           <section class="fix-section section" id="fix-section">
+             <div class="inner">
+               <div class="section-heading">
+                 <h2 class="heading-primary">既知の修正箇所</h2>
+               </div>
+               <div class="section-lead">
+                 <p>
+                   たくさん修正箇所あるけど許して
+                 </p>
+               </div>
+               <div class="section-body about">
+                 <div class="about-item">
+                   <div class="about-body">
+                     <h2><u>①FBXからglTFに変換するとアニメーションが崩れる</u></h2>
+                     <p>
+                        　走ってたはずなのに．．．<br>
+                        　blender(2.8系)で変換したときにアニメーションが崩れている模様．直し方に心当たりあれば教えてください．
+                     </p>
+                     <h2><u>②そもそものキャラやマーカーのクオリティが低い</u></h2>
+                     <p>
+                        　今後もこのクオリティです．<br>
+                        (別の活動の余った時間でなんとかやってるので)<br>
+                        　誰か作ってくれたら嬉しいなあ(チラッ)
+                     </p>
+                     <h2><u>③サイトはテンプレのコピペ</u></h2>
+                     <p>
+                        　テンプレしゅごい<br>
+                        　別で作っているサイトがhugoなので移植難しい気がする
+                     </p>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </section>
+           <!-- /.fix-section -->
+
+    <!-- .footer -->
+    <footer class="footer">
+      <div class="page-top" id="js-page-top">
+        トップへもどる
+      </div>
+      <div class="inner">
+        <div class="copyright">Copyright&copy;TARO YAMADA. All Rights Reserved.</div>
+      </div>
+    </footer>
+    <!-- /.footer -->
+
+  </div>
+
+  <!-- 下記はPhotoswipeプラグイン用 -->
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+       It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+      <!-- Container that holds slides.
+          PhotoSwipe keeps only 3 of them in the DOM to save memory.
+          Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+        </button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+        </button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type='text/javascript' src="js/photoswipe/photoswipe.min.js"></script>
+  <script type='text/javascript' src="js/photoswipe/photoswipe-ui-default.js"></script>
+  <script type='text/javascript' src="js/photoswipe/photoswipe-setup.js"></script>
+  <script type='text/javascript' src="js/lazysizes/lazysizes.min.js"></script>
+  <script type='text/javascript' src="js/script.js"></script>
+</body>
 </html>
