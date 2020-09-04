@@ -16,7 +16,7 @@
 <script src="https://unpkg.com/aframe-text-geometry-component@0.5.1/dist/aframe-text-geometry-component.min.js"></script>.
 
 
-<a-scene embedded arjs="debugUIEnabled:false;" vr-mode-ui="enabled: false">
+<a-scene embedded arjs="debugUIEnabled:false;" renderer="gammaOutput: true;" vr-mode-ui="enabled: false">
 
 <a-assets>
 	<a-asset-item id="yatsuha" src="yatsuha_new_blender.gltf"></a-asset-item>
@@ -27,7 +27,7 @@
 </a-marker>
 
 <a-light type="ambient" color="#ffffff" intensity="2.0" ></a-light>
-<a-light type="hemisphere" intensity="2.0" position="0 200 0"></a-light>
+<a-light type="point" intensity="2.0" position="0 200 0"></a-light>
 <a-entity camera></a-entity>
     </a-scene>
     <script>
