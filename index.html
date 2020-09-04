@@ -23,11 +23,18 @@
 </a-assets>
 
 <a-marker preset = 'custom' type='pattern' url='pattern-favicon512.patt'>
-	<a-entity gltf-model="#yatsuha"  rotation="0 0 0" position="0 0.5 0" scale="2 2 2" animation-mixer="clip:*"></a-entity>
+	<a-entity gltf-model="#yatsuha"  rotation="0 0 0" position="0 0.5 0" scale="2 2 2" animation-mixer spinning="" emissive-light="" material="" visible="" >
+  <a-light position=""
+      intensity="1"
+      light=""
+      angle="-180"
+      distance="20"
+      type="spot"
+      rotation=""
+      scale=""
+      visible=""></a-light>
+  </a-entity>
 </a-marker>
-
-<a-light type="ambient" color="#ffffff" intensity="2.0" ></a-light>
-<a-light type="point" intensity="2.0" position="0 0 0"></a-light>
 <a-entity camera></a-entity>
     </a-scene>
     <script>
