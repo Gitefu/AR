@@ -1,109 +1,109 @@
 <!DOCTYPE html>
 <html lang="ja">
-	<head>
-		<title>ABC4</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<style>
-			body {
-				color: #ffffff;
-				font-family:Monospace;
-				font-size:13px;
-				text-align:center;
-				font-weight: bold;
+<head>
+  <title>ABC4</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <style>
+    body {
+      color: #ffffff;
+      font-family:Monospace;
+      font-size:13px;
+      text-align:center;
+      font-weight: bold;
 
-				background-color: #000000;
-				margin: 0px;
-				overflow: hidden;
-			}
-			#info {
-				color: #fff;
-				position: absolute;
-				top: 0px; width: 100%;
-				padding: 5px;
-				z-index:100;
-			}
+      background-color: #000000;
+      margin: 0px;
+      overflow: hidden;
+    }
+    #info {
+      color: #fff;
+      position: absolute;
+      top: 0px; width: 100%;
+      padding: 5px;
+      z-index:100;
+    }
 
-		</style>
-	</head>
+  </style>
+</head>
 
-	<body>
+<body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/105/three.min.js"></script>
   <script>
 
-// シーンの作�E
-var scene = new THREE.Scene();
-// カメラの作�E
-var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-// レンダラーの作�E
-var renderer = new THREE.WebGLRenderer();
-// レンダラーが描画するキャンバスサイズの設宁E
-renderer.setSize( window.innerWidth, window.innerHeight );
-// キャンバスをDOMチE��ーに追加
-document.body.appendChild( renderer.domElement );
+    // シーンの作�E
+    var scene = new THREE.Scene();
+    // カメラの作�E
+    var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+    // レンダラーの作�E
+    var renderer = new THREE.WebGLRenderer();
+    // レンダラーが描画するキャンバスサイズの設宁E
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    // キャンバスをDOMチE��ーに追加
+    document.body.appendChild( renderer.domElement );
 
 
 
-// FontLoaderインスタンスの作�E
-var loader = new THREE.FontLoader();
-// フォント�EローチE
-loader.load( './beon/Beon_Medium.js', function ( font ) {
-// ここにフォントを読み込んだあとの処琁E��記述
+    // FontLoaderインスタンスの作�E
+    var loader = new THREE.FontLoader();
+    // フォント�EローチE
+    loader.load( './beon/Beon_Medium.js', function ( font ) {
+      // ここにフォントを読み込んだあとの処琁E��記述
 
-// チE��ストオブジェクト�E作�E
-// 第1引数に作�Eする斁E��を持E��し、あとはパラメータ
-// font: 使用するフォント！Eypeface.jsで作�Eされたフォント！E
-// size: チE��ストサイズ
-// height: チE��スト�E奥行き
-// curveSegments: 曲線に使用する点の数
-// bevelEnabled: 斜体にするかどぁE��
-// bevelThickness: 斜体�E傾き度
-// bevelSize: アウトラインからどの程度傾けるぁE
+      // チE��ストオブジェクト�E作�E
+      // 第1引数に作�Eする斁E��を持E��し、あとはパラメータ
+      // font: 使用するフォント！Eypeface.jsで作�Eされたフォント！E
+      // size: チE��ストサイズ
+      // height: チE��スト�E奥行き
+      // curveSegments: 曲線に使用する点の数
+      // bevelEnabled: 斜体にするかどぁE��
+      // bevelThickness: 斜体�E傾き度
+      // bevelSize: アウトラインからどの程度傾けるぁE
 
-var textGeometry = new THREE.TextGeometry( 'ABC', {
-font: font,
-size: 10.0,
-height: 5,
-curveSegments: 10,
-bevelThickness: 3,
-bevelSize: 1.0,
-bevelEnabled: true
-} );
-textGeometry.center();
+      var textGeometry = new THREE.TextGeometry( 'ABC', {
+        font: font,
+        size: 10.0,
+        height: 5,
+        curveSegments: 10,
+        bevelThickness: 3,
+        bevelSize: 1.0,
+        bevelEnabled: true
+      } );
+      textGeometry.center();
 
-// マテリアルの作�E
-var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+      // マテリアルの作�E
+      var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
 
-// オブジェクト�E作�E
-// var text = new THREE.Mesh( textGeometry, material );
-var mesh = new THREE.Line( textGeometry, material );
+      // オブジェクト�E作�E
+       var text = new THREE.Mesh( textGeometry, material );
+      //var mesh = new THREE.Line( textGeometry, material );
 
-// オブジェクトをシーンに追加
-//scene.add( text );
-scene.add( mesh );
+      // オブジェクトをシーンに追加
+      scene.add( text );
+      //scene.add( mesh );
 
-} );
+    } );
 
 
-// カメラ位置設宁E
-camera.position.z = 20;
-camera.position.x = 0.5;
-camera.position.y = 0.5;
+    // カメラ位置設宁E
+    camera.position.z = 20;
+    camera.position.x = 0.5;
+    camera.position.y = 0.5;
 
-function render(){
-// requestAnimationFrameで自刁E�E身を呼び出し続けることでレンダリングを繰り返す
-requestAnimationFrame( render );
+    function render(){
+      // requestAnimationFrameで自刁E�E身を呼び出し続けることでレンダリングを繰り返す
+      requestAnimationFrame( render );
 
-// 3D斁E���E移勁E
-camera.position.x += 0.01;
+      // 3D斁E���E移勁E
+      camera.position.x += 0.01;
 
-// レンダリング�E�表示�E�E
-renderer.render(scene,camera);
+      // レンダリング�E�表示�E�E
+      renderer.render(scene,camera);
 
-}
-render();
+    }
+    render();
 
-</script>
+  </script>
 
 </body>
 
