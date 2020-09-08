@@ -90,15 +90,14 @@
       // マテリアルの作�E
       const loader = new THREE.TextureLoader();
       const texture = loader.load('white.png');
-      var material = new THREE.ShaderMaterial( {
-
-uniforms: uniforms,
-
-vertexShader: document.getElementById( ‘vertexShader’ ).textContent,
-
-fragmentShader: document.getElementById( ‘fragmentShader’ ).textContent
-
-});
+      var material = new THREE.MeshBasicMaterial({
+            map: texture, // テクスチャーを指定
+            color: 0x007eff, // 色
+            transparent: true, // 透明の表示許可
+            blending: THREE.AdditiveBlending, // ブレンドモード
+            side: THREE.DoubleSide, // 表裏の表示設定
+            depthWrite: false // デプスバッファへの書き込み可否
+          });
 
       // オブジェクト�E作�E
        var text = new THREE.Mesh( textGeometry, material );
