@@ -31,13 +31,18 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/105/three.min.js"></script>
   <script>
 
-    // シーンの作�E
-    var scene = new THREE.Scene();
-    scene.add( new THREE.AmbientLight( 0x101010 ) );
+    / シーン
+
+    scene = new THREE.Scene();
+
+    scene.fog = new THREE.Fog( 0x050505, 200, 1000 );
+
+    scene.add( new THREE.AmbientLight( 0x050505 ) );
     // カメラの作�E
     var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
     // レンダラーの作�E
     var renderer = new THREE.WebGLRenderer();
+    renderer.setClearColor( scene.fog.color, 1 );
     // レンダラーが描画するキャンバスサイズの設宁E
     renderer.setSize( window.innerWidth, window.innerHeight );
     // キャンバスをDOMチE��ーに追加
