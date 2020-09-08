@@ -42,6 +42,21 @@
     renderer.setSize( window.innerWidth, window.innerHeight );
     // キャンバスをDOMチE��ーに追加
     document.body.appendChild( renderer.domElement );
+    var uniforms = {
+
+    time: { type: “f”, value: 1.0 },
+
+    resolution: { type: “v2”, value: new THREE.Vector2() },
+
+    mouse: { type: “v2”, value: new THREE.Vector2() }
+
+    };
+
+    uniforms.resolution.value.x = window.innerWidth;
+
+    uniforms.resolution.value.y = window.innerHeight;
+
+
 
 
 
@@ -75,14 +90,15 @@
       // マテリアルの作�E
       const loader = new THREE.TextureLoader();
       const texture = loader.load('white.png');
-      var material = new THREE.MeshBasicMaterial({
-            map: texture, // テクスチャーを指定
-            color: 0x007eff, // 色
-            transparent: true, // 透明の表示許可
-            blending: THREE.AdditiveBlending, // ブレンドモード
-            side: THREE.DoubleSide, // 表裏の表示設定
-            depthWrite: false // デプスバッファへの書き込み可否
-          });
+      var material = new THREE.ShaderMaterial( {
+
+uniforms: uniforms,
+
+vertexShader: document.getElementById( ‘vertexShader’ ).textContent,
+
+fragmentShader: document.getElementById( ‘fragmentShader’ ).textContent
+
+});
 
       // オブジェクト�E作�E
        var text = new THREE.Mesh( textGeometry, material );
