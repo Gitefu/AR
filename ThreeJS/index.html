@@ -4,74 +4,82 @@
   <meta charset="utf-8"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/105/three.min.js"></script>
   <script>
-    // ページの読み込みを待つ
-    window.addEventListener('load', init);
 
-    function init() {
+// シーンの作�E
+var scene = new THREE.Scene();
+// カメラの作�E
+var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+// レンダラーの作�E
+var renderer = new THREE.WebGLRenderer();
+// レンダラーが描画するキャンバスサイズの設宁E
+renderer.setSize( window.innerWidth, window.innerHeight );
+// キャンバスをDOMチE��ーに追加
+document.body.appendChild( renderer.domElement );
 
-      // サイズを指定
-      const width = 960;
-      const height = 540;
 
-      // レンダラーを作成
-      const renderer = new THREE.WebGLRenderer({
-        canvas: document.querySelector('#myCanvas')
-      });
-      renderer.setPixelRatio(window.devicePixelRatio);
-      renderer.setSize(width, height);
+// TrackballControlsインスタンス作�E
+var controls = new THREE.TrackballControls( camera );
 
-      // シーンを作成
-      const scene = new THREE.Scene();
+// FontLoaderインスタンスの作�E
+var loader = new THREE.FontLoader();
+// フォント�EローチE
+loader.load( './beon/Beon_Medium.js', function ( font ) {
+// ここにフォントを読み込んだあとの処琁E��記述
 
-      // カメラを作成
-      const camera = new THREE.PerspectiveCamera(45, width / height);
-      camera.position.set(0, 0, +1000);
+// チE��ストオブジェクト�E作�E
+// 第1引数に作�Eする斁E��を持E��し、あとはパラメータ
+// font: 使用するフォント！Eypeface.jsで作�Eされたフォント！E
+// size: チE��ストサイズ
+// height: チE��スト�E奥行き
+// curveSegments: 曲線に使用する点の数
+// bevelEnabled: 斜体にするかどぁE��
+// bevelThickness: 斜体�E傾き度
+// bevelSize: アウトラインからどの程度傾けるぁE
 
-      // FontLoaderインスタンスの作成
-      var loader = new THREE.FontLoader();
-      // フォントのロード
-      loader.load( './beon/Beon_Medium.json', function ( font ) {
-        // テキストオブジェクトの作成
-        // 第1引数に作成する文字を指定し、あとはパラメータ
-        // font: 使用するフォント（typeface.jsで作成されたフォント）
-        // size: テキストサイズ
-        // height: テキストの奥行き
-        // curveSegments: 曲線に使用する点の数
-        // bevelEnabled: 斜体にするかどうか
-        // bevelThickness: 斜体の傾き度
-        // bevelSize: アウトラインからどの程度傾けるか
-        var textGeometry = new THREE.TextGeometry( 'ABC', {
-         font: font,
-         size: 10.0,
-         height: 5,
-         curveSegments: 10,
-         bevelThickness: 3,
-         bevelSize: 1.0,
-         bevelEnabled: true
-        } );
-        // ジオメトリを中心に移動
-        textGeometry.center();
+var textGeometry = new THREE.TextGeometry( 'ABC', {
+font: font,
+size: 10.0,
+height: 5,
+curveSegments: 10,
+bevelThickness: 3,
+bevelSize: 1.0,
+bevelEnabled: true
+} );
+textGeometry.center();
 
-        // マテリアルの作成
-        var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+// マテリアルの作�E
+var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
 
-        // オブジェクトの作成
-        var text = new THREE.Mesh( textGeometry, material );
+// オブジェクト�E作�E
+// var text = new THREE.Mesh( textGeometry, material );
+var mesh = new THREE.Line( textGeometry, material );
 
-        // オブジェクトをシーンに追加
-        scene.add( text );
-      } );
+// オブジェクトをシーンに追加
+//scene.add( text );
+scene.add( mesh );
 
-      tick();
+} );
 
-      // 毎フレーム時に実行されるループイベントです
-      function tick() {
-        box.rotation.y += 0.01;
-        renderer.render(scene, camera); // レンダリング
 
-        requestAnimationFrame(tick);
-      }
-    }
+// カメラ位置設宁E
+camera.position.z = 20;
+camera.position.x = 0.5;
+camera.position.y = 0.5;
+
+function render(){
+// requestAnimationFrameで自刁E�E身を呼び出し続けることでレンダリングを繰り返す
+requestAnimationFrame( render );
+
+// 3D斁E���E移勁E
+camera.position.x += 0.01;
+
+// レンダリング�E�表示�E�E
+renderer.render(scene,camera);
+
+controls.update();
+}
+render();
+
   </script>
 </head>
 <body>
