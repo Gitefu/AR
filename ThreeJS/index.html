@@ -73,7 +73,14 @@
       textGeometry.center();
 
       // マテリアルの作�E
-      var material = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
+      var loader = new THREE.TextureLoader();
+      var map = loader.load("textures/source.png");
+      var material = new THREE.SpriteMaterial({
+                        map: map,
+                        color: 0xffffff,
+                        blending: THREE.AdditiveBlending,
+                        transparent: true
+                      });
 
       // オブジェクト�E作�E
        var text = new THREE.Mesh( textGeometry, material );
