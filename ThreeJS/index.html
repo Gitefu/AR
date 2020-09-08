@@ -33,7 +33,6 @@
 
     // シーンの作�E
     var scene = new THREE.Scene();
-    
     scene.add( new THREE.AmbientLight( 0x050505 ) );
     // カメラの作�E
     var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -74,11 +73,7 @@
       textGeometry.center();
 
       // マテリアルの作�E
-      var material = new THREE.SpriteMaterial({
-        color: 0xffffff,
-        blending: THREE.AdditiveBlending,
-        transparent: true
-      });
+      var material = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
 
       // オブジェクト�E作�E
        var text = new THREE.Mesh( textGeometry, material );
