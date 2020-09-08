@@ -65,7 +65,7 @@
         size: 10.0,
         height: 5,
         curveSegments: 10,
-        bevelThickness: 3,
+        bevelThickness: 1,
         bevelSize: 1.0,
         bevelEnabled: true
       } );
@@ -94,8 +94,7 @@
       // requestAnimationFrameで自刁E�E身を呼び出し続けることでレンダリングを繰り返す
       requestAnimationFrame( render );
 
-      // 3D斁E���E移勁E
-      camera.position.x += 0.01;
+
 
       // レンダリング�E�表示�E�E
       renderer.render(scene,camera);
