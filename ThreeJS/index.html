@@ -75,11 +75,15 @@
       // マテリアルの作�E
       var loader = new THREE.TextureLoader();
       var map = loader.load("textures/source.png");
-      var	material = new THREE.LineBasicMaterial( { color: 0xffffff, vertexColors: true } );
+      var material = new THREE.SpriteMaterial({
+                        map: map,
+                        color: 0xffffff,
+                        blending: THREE.AdditiveBlending,
+                        transparent: true
+                      });
 
       // オブジェクト�E作�E
        var text = new THREE.Mesh( textGeometry, material );
-       text.scale.multiplyScalar(10);
       //var mesh = new THREE.Line( textGeometry, material );
 
       // オブジェクトをシーンに追加
