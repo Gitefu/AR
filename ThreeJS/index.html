@@ -43,8 +43,6 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
 
-// TrackballControlsインスタンス作�E
-var controls = new THREE.TrackballControls( camera );
 
 // FontLoaderインスタンスの作�E
 var loader = new THREE.FontLoader();
@@ -102,7 +100,6 @@ camera.position.x += 0.01;
 // レンダリング�E�表示�E�E
 renderer.render(scene,camera);
 
-controls.update();
 }
 render();
 
